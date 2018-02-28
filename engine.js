@@ -57,11 +57,11 @@ module.exports = function (options) {
         }, {
           type: 'input',
           name: 'scope',
-          message: 'What is the scope of this change (e.g. component or file name)? (press enter to skip)\n'
+          message: 'What is the scope of this change (e.g. component, section or file name)? (press enter to skip)\n'
         }, {
           type: 'input',
           name: 'subject',
-          message: 'Write a short, imperative tense description of the change:\n'
+          message: 'Write commit title:\n'
         }, {
           type: 'input',
           name: 'body',
@@ -86,7 +86,7 @@ module.exports = function (options) {
         }, {
           type: 'input',
           name: 'issues',
-          message: 'Add issue references (e.g. "fix #123", "re #123".):\n',
+          message: 'Add trello issue references (e.g. "fix #123", "re #123".):\n',
           when: function(answers) {
             return answers.isIssueAffected;
           }
@@ -104,7 +104,7 @@ module.exports = function (options) {
 
         // parentheses are only needed when a scope is present
         var scope = answers.scope.trim();
-        scope = scope ? '(' + answers.scope.trim() + ')' : '';
+        scope = scope ? '[' + answers.scope.trim() + ']' : '';
 
         // Hard limit this line
         var head = (answers.type + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
